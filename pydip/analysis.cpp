@@ -28,7 +28,7 @@ void init_analysis( py::module& m ) {
 
    // diplib/distribution.h
    auto distr = py::class_< dip::Distribution >( m, "Distribution", "" );
-   distr.def( "__repr__", []( dip::Distribution const& self ) { return "<Distribution>"; } );
+   distr.def( "__repr__", []( dip::Distribution const& ) { return "<Distribution>"; } );
    distr.def( "__str__", []( dip::Distribution const& self ) { std::ostringstream os; os << self; return os.str(); } );
    distr.def( "__getitem__", []( dip::Distribution const& self, dip::uint index ) {
                                     auto const& sample = self[ index ];
@@ -73,6 +73,9 @@ void init_analysis( py::module& m ) {
    m.def( "StructureAnalysis", &dip::StructureAnalysis,
           "in"_a, "mask"_a = dip::Image{}, "scales"_a = std::vector< dip::dfloat >{}, "feature"_a = "energy",
           "gradientSigmas"_a = dip::FloatArray{ 1.0 }, "method"_a = dip::S::BEST, "boundaryCondition"_a = dip::StringArray{}, "truncation"_a = 3.0 );
+   m.def( "Granulometry", &dip::Granulometry,
+          "in"_a, "mask"_a = dip::Image{}, "scales"_a = std::vector< dip::dfloat >{}, "type"_a = "isotropic", "polarity"_a = dip::S::OPENING,
+          "options"_a = dip::StringSet{} );
    m.def( "FractalDimension", &dip::FractalDimension, "in"_a, "eta"_a = 0.5 );
 
    // diplib/distance.h

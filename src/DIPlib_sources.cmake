@@ -61,6 +61,7 @@ set(DIPlib_sources_bogus
 ../include/diplib/union_find.h
 analysis/findshift.cpp
 analysis/fractal_dimension.cpp
+analysis/granulometry.cpp
 analysis/structure_tensor.cpp
 analysis/subpixel_location.cpp
 binary/binary_basic.cpp

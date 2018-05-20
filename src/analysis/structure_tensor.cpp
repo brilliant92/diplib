@@ -322,12 +322,17 @@ Distribution StructureAnalysis(
    DIP_THROW_IF( !in.DataType().IsReal(), E::DATA_TYPE_NOT_SUPPORTED );
    dip::uint nDims = in.Dimensionality();
    DIP_THROW_IF(( nDims < 2 ) || ( nDims > 3 ), E::DIMENSIONALITY_NOT_SUPPORTED );
-   std::vector< dfloat > const& scales = in_scales.empty() ? default_scales : in_scales;
+   // Scales
+   std::vector< dfloat > scales = in_scales.empty() ? default_scales : in_scales; // copy
+   std::sort( scales.begin(), scales.end() );
+   DIP_THROW_IF( scales[ 0 ] < 0.8, E::PARAMETER_OUT_OF_RANGE ); // ensures we don't have negative ones either
+   // Sigmas
    FloatArray tensorSigmas = gradientSigmas;
    DIP_STACK_TRACE_THIS( ArrayUseParameter( tensorSigmas, nDims, 1.0 ));
    for (auto& ts : tensorSigmas) {
       ts *= scales[ 0 ];
    }
+   // Compute
    dip::Image ST;
    DIP_STACK_TRACE_THIS( StructureTensor( in, {}, ST, gradientSigmas, tensorSigmas, method, boundaryCondition, truncation ));
    Distribution out( scales );
