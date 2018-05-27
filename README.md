@@ -213,7 +213,7 @@ to the Apache License, except for *OME Bio-Formats*.
   Copyright (c) 2003, 2007-14 Massachusetts Institute of Technology  
   GNU General Public License, Version 2 (not compatible with the Apache License)
 
-*DIPviewer* links agains the following libraries:
+*DIPviewer* links against the following libraries:
 
 - *FreeGLUT* (as installed on your system, alternative to *GLFW*)  
   Copyright 1999-2000 Pawel W. Olszta  

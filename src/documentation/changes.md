@@ -369,6 +369,8 @@ code that used *DIPlib* or *DIPimage* to the new version.
     `numArgumentsFromSubscript`, `numberchannels`, `numpixels`, `numtensorel`, `sinh`, `slice_ex`, `slice_in`,
     `slice_op`, `spatialtotensor`, `swapdim`, `tanh`, `tensorfun`, `tensorsize`, `tensortospatial`.
 
+  - `eig_largest` has been moved to the toolbox directory.
+
   - `besselj`, `length` and `unique` are no longer methods of `dip_image`.
 
 - Related to the tensor image changes above, `newimar` and `imarfun` are now in the `alias`
@@ -505,16 +507,17 @@ code that used *DIPlib* or *DIPimage* to the new version.
     number of dimensions (with special support for 2D and 3D images).
 
   - `curvature_thirion` and `isophote_curvature` have been moved to the `alias` directory. The function
-    `curvature` now takes `'thirion'` and `'isophote'` as options.
+    `curvature` now takes `'thirion'` and `'isophote'` as options. `orientation4d` has been moved to the
+    `alias` directory. A new function `orientation` generalizes it to arbitrary dimensionality.
 
   - `granulometry` has changed, but it is still possible to call it the old way. However, the parameters
-    in this old syntax are interpreted to match the new possibilities of this function. ``'usegrey'` and
+    in this old syntax are interpreted to match the new capabilities of this function. ``'usegrey'` and
     ``'verbose'` options no longer have an effect. Default values have changed a bit.
 
 - New functions not mentioned above: `abssqr`, `areaopening`, `asf`, `cluster`, `coordinates`, `drawshape`,
-  `extendregion`, `getmaximumandminimum`, `getsamplestatistics`, `lee`, `pathopening`, `select`, `setborder`,
-  `skew`, `smallobjectsremove`, `thetatheta`, `traceobjects`. Use `help <functionname>` in MATLAB to
-  learn what these functions provide.
+  `extendregion`, `getmaximumandminimum`, `getsamplestatistics`, `lee`, `pathopening`, `quantize`, `select`,
+  `setborder`, `skew`, `smallobjectsremove`, `thetatheta`, `traceobjects`, `cell2im`, `im2cell`.
+  Use `help <functionname>` in MATLAB to learn what these functions provide.
 
 - `jacobi` moved to the `alias` directory, `eig` does it better now.
 
