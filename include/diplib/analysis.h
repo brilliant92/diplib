@@ -461,6 +461,8 @@ DIP_EXPORT Distribution PairCorrelation(); // TODO
 
 DIP_EXPORT Distribution ProbabilisticPairCorrelation(); // TODO
 
+DIP_EXPORT Distribution Variogram(); // TODO
+
 DIP_EXPORT Distribution ChordLength(); // TODO
 
 DIP_EXPORT Distribution RadialDistribution(); // TODO

@@ -190,7 +190,7 @@ Distribution Granulometry(
 
          // Normalized average
          dfloat result = Mean( tmp, mask ).As< dfloat >();
-         out[ ii ].y = clamp(( result - offset ) * gain, 0.0, 1.0 ); // Clamping is necessary if we interpolate and/or subsample
+         out[ ii ].Y() = clamp(( result - offset ) * gain, 0.0, 1.0 ); // Clamping is necessary if we interpolate and/or subsample
       }
 
    } else {
@@ -210,7 +210,7 @@ Distribution Granulometry(
             //std::cout << "Path, scale = " << scales[ ii ] << ", mode = " << mode << '\n';
          }
          dfloat result = Mean( tmp, mask ).As< dfloat >();
-         out[ ii ].y = ( result - offset ) * gain;
+         out[ ii ].Y() = ( result - offset ) * gain;
       }
 
    }

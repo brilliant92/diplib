@@ -695,11 +695,14 @@ inline mxArray* GetArray( dip::FileInformation const& fileInformation ) {
 /// \brief Convert a `dip::Distribution` object to `mxArray` by copy.
 inline mxArray* GetArray( dip::Distribution const& in ) {
    dip::uint n = in.Size();
-   mxArray* mx = mxCreateDoubleMatrix( n, 2, mxREAL );
+   dip::uint m = in.ValuesPerSample();
+   mxArray* mx = mxCreateDoubleMatrix( n, m + 1, mxREAL );
    double* data = mxGetPr( mx );
    for( auto& v : in ) {
-      data[ 0 ] = v.x;
-      data[ n ] = v.y;
+      data[ 0 ] = v.X();
+      for( dip::uint ii = 0; ii < m; ++ii ) {
+         data[ n * ( ii + 1 ) ] = v.Y( ii );
+      }
       ++data;
    }
    return mx;

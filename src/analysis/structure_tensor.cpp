@@ -339,7 +339,7 @@ Distribution StructureAnalysis(
    dip::Image featureImage;
    dip::ImageRefArray refArray{ featureImage };
    DIP_STACK_TRACE_THIS( StructureTensorAnalysis( ST, refArray, { feature } ));
-   DIP_STACK_TRACE_THIS( out[ 0 ].y = Mean( featureImage, mask ).As< dfloat >() );
+   DIP_STACK_TRACE_THIS( out[ 0 ].Y() = Mean( featureImage, mask ).As< dfloat >() );
    FloatArray deltaSigmas( nDims );
    for( dip::uint ii = 1; ii < scales.size(); ++ii ) {
       // We smooth the ST, which is already smoothed by `tensorSigmas = gradientSigmas * scale[ ii - 1 ]`,
@@ -353,7 +353,7 @@ Distribution StructureAnalysis(
       }
       DIP_STACK_TRACE_THIS( Gauss( ST, ST, deltaSigmas, {}, method, boundaryCondition, truncation ));
       DIP_STACK_TRACE_THIS( StructureTensorAnalysis( ST, refArray, { feature } ));
-      DIP_STACK_TRACE_THIS( out[ ii ].y = Mean( featureImage, mask ).As< dfloat >() );
+      DIP_STACK_TRACE_THIS( out[ ii ].Y() = Mean( featureImage, mask ).As< dfloat >() );
    }
    return out;
 }
